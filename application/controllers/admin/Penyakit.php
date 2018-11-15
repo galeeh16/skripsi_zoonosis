@@ -8,6 +8,7 @@ class Penyakit extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Model_penyakit');
 		$this->load->model('Model_solusi');
+		$this->load->model('Model_rules');
 	}
 
 	public function index()
@@ -157,6 +158,90 @@ class Penyakit extends CI_Controller {
 			}
 		}
 	}
+
+	public function ubah()
+	{
+		$id = $this->input->post('id_penyakit');
+		$result = ['success' => false, 'messages' => []];
+		$msg = [
+			'required' => 'Harap isi %s',
+			'min_length' => '%s terlalu singkat',
+			'max_length' => '%s terlalu panjang',
+			'is_unique' => '%s sudah digunakan',
+			'numeric' => '%s harus berupa nomor'
+		];
+	
+		if($this->input->post('kode_penyakit') == $this->input->post('kode_penyakit_2')) {
+			$this->form_validation->set_rules('kode_penyakit', 'Kode Penyakit', 'trim|required|min_length[2]|max_length[15]', $msg);
+		} else {
+			$this->form_validation->set_rules('kode_penyakit', 'Kode Penyakit', 'trim|required|min_length[2]|max_length[15]|is_unique[penyakit.kode_penyakit]', $msg);
+		}
+
+		$this->form_validation->set_rules('nama_penyakit', 'Nama Penyakit', 'trim|required|min_length[5]|max_length[50]', $msg);
+
+		$this->form_validation->set_rules('deskripsi_penyakit', 'Deskripsi Penyakit', 'trim|required|min_length[3]|max_length[500]', $msg);
+
+		$this->form_validation->set_rules('id_solusi', 'Solusi', 'trim|required', $msg);
+
+		$this->form_validation->set_rules('foto', 'Foto', 'callback_photo_check');
+
+		$this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
+
+		if ($this->form_validation->run($this) == TRUE) { 
+			$data = [];
+			if(!empty($_FILES['foto']['name'])) {
+
+				$this->delete_photo($id);
+				$data = [
+					'kode_penyakit' => $this->input->post('kode_penyakit'),
+					'nama_penyakit' => $this->input->post('nama_penyakit'),
+					'deskripsi_penyakit' => $this->input->post('deskripsi_penyakit'),
+					'id_solusi' => $this->input->post('id_solusi'),
+					'foto' => $this->upload_photo()
+				];
+			} else {
+				$data = [
+					'kode_penyakit' => $this->input->post('kode_penyakit'),
+					'nama_penyakit' => $this->input->post('nama_penyakit'),
+					'deskripsi_penyakit' => $this->input->post('deskripsi_penyakit'),
+					'id_solusi' => $this->input->post('id_solusi')
+				];
+			}
+
+			if($this->Model_penyakit->update_data($id, $data)) $result['success'] = true;
+		} else {
+			foreach ($_POST as $key => $value) {
+				$result['messages'][$key] = form_error($key);
+				$result['messages']['foto'] = form_error('foto');
+			}
+		}
+		echo json_encode($result);
+	}
+
+	public function delete_photo($id)
+	{
+		$cek = $this->Model_penyakit->get_where($id);
+		if($cek->foto !== '') {
+			if(file_exists('assets/img/penyakit/'.$cek->foto)) {
+				return unlink('assets/img/penyakit/'.$cek->foto);
+			}
+		}
+	}
+
+	public function hapus()
+	{
+		$result['success'] = false;
+		$id = $this->input->post('id_penyakit');
+
+		$this->delete_photo($id);
+		$this->Model_rules->delete_rules_penyakit($id);
+
+		if($this->Model_penyakit->delete_data($id)) {
+			$result['success'] = true;
+			echo json_encode($result);
+		} 
+	}
+
 
 }
 

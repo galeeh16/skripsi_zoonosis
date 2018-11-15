@@ -10,12 +10,23 @@ class Model_rules extends CI_Model {
 		$this->db->where('id_gejala', $id_gejala);
 		$this->db->delete($this->table);
 
-		// if($this->db->affected_rows() > 0 ) {
-		// 	return true;
-		// } else {
-		// 	return false;
-		// }
+		if($this->db->affected_rows() > 0 ) {
+			return true;
+		} else {
+			return false;
+		}
 	}	
+
+	function delete_rules_penyakit($id) {
+		$this->db->where('id_penyakit', $id);
+		$this->db->delete($this->table);
+
+		if($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	function get_total_rules() {
     $this->db->select('COUNT(*) AS jumlah');

@@ -60,6 +60,17 @@ class Model_penyakit extends CI_Model {
   	return $this->db->count_all_results();  
   }
 
+  function get_where($id) {
+    $this->db->where('id_penyakit', $id);
+    $query =  $this->db->get($this->table);
+
+    if($query->num_rows() > 0) {
+      return $query->row();
+    } else {
+      return false;
+    }
+  }
+
   function insert_data($data) {
   	$this->db->insert($this->table, $data);
   	if($this->db->affected_rows() > 0) {
@@ -67,6 +78,28 @@ class Model_penyakit extends CI_Model {
   	} else {
   		return false;
   	}
+  }
+
+  function update_data($id, $data) {
+    $this->db->where('id_penyakit', $id);
+    $this->db->update($this->table, $data);
+
+    if($this->db->affected_rows() > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function delete_data($id) {
+    $this->db->where('id_penyakit', $id);
+    $this->db->delete($this->table);
+
+    if($this->db->affected_rows() > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
