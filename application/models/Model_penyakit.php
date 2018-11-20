@@ -60,6 +60,10 @@ class Model_penyakit extends CI_Model {
   	return $this->db->count_all_results();  
   }
 
+  function get_all() {
+    return $this->db->get($this->table)->result();
+  }
+
   function get_where($id) {
     $this->db->where('id_penyakit', $id);
     $query =  $this->db->get($this->table);

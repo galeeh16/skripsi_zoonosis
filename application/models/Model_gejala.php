@@ -51,6 +51,10 @@ class Model_gejala extends CI_Model {
   	return $this->db->count_all_results();  
   }
 
+  function get_all() {
+    return $this->db->get($this->table)->result();
+  }
+
   function get_id($id) 
   {
   	$this->db->where('id_gejala', $id);

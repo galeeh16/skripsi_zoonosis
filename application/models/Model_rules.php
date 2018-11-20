@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Model_rules extends CI_Model {
 
 	private $table = 'rules';
+	private $select_column = array("id_rules", "id_gejala", "id_penyakit", "kode_gejala", "nama_gejala", "kode_penyakit", "nama_penyakit", "bobot");  
+  private $order_column = array(null, null, null, "kode_gejala", "nama_gejala", "kode_penyakit", "nama_penyakit", "bobot");
 
 	function delete_rules_gejala($id_gejala) 
 	{
