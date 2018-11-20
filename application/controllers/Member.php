@@ -13,7 +13,7 @@ class Member extends CI_Controller {
 
 	public function index()	{
 		$data['title'] = 'Zoonosis | Home';
-		$data['gejala'] = $this->Model_gejala->get_all();
+		$data['gejala'] = $this->Model_gejala->get_all_array();
 		$this->load->view('pages/v_header', $data);
 		$this->load->view('member/v_home', $data);
 	}
