@@ -62,7 +62,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a href="<?= base_url('home/logout') ?>"><i class="lnr lnr-exit"></i> <span>Logout</span></a>
+                  <a href="<?= base_url('welcome/logout') ?>"><i class="lnr lnr-exit"></i> <span>Logout</span></a>
                 </li>
               </ul>
           </li>

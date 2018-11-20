@@ -85,7 +85,7 @@
 							</div>
 							
 						
-							<form class="form-auth-small" method="POST" action="<?php echo base_url('home/proses_daftar') ?>" id="form-daftar">
+							<form class="form-auth-small" method="POST" action="<?php echo base_url('welcome/proses_daftar') ?>" id="form-daftar">
 								<div class="form-group">
 									<label class="control-label">Nama Lengkap</label>
 									<input type="text" name="name" id="name" class="form-control" placeholder="Nama Lengkap">
