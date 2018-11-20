@@ -18,4 +18,11 @@ class Welcome extends CI_Controller {
 			$this->load->view('pages/v_home');
 		}
 	}
+
+	public function bantuan()
+	{
+		$data['title'] = 'Bantuan';
+		$this->load->view('pages/v_header', $data);
+		$this->load->view('pages/v_bantuan');
+	}
 }
