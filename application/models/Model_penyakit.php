@@ -106,6 +106,12 @@ class Model_penyakit extends CI_Model {
     }
   }
 
+  function get_gejala($id) {
+    $this->db->where('id_penyakit', $id);
+    $this->db->join('gejala', 'gejala.id_gejala = rules.id_gejala', 'left');
+    return $this->db->get('rules')->result();
+  }
+
 }
 
 /* End of file Model_penyakit.php */

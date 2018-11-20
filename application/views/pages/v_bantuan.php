@@ -148,3 +148,8 @@
 		<!-- end row -->
 	</div>
 	<!-- end container -->
+
+<br>
+<br>
+	<?php $this->load->view('pages/v_footer'); ?>
+

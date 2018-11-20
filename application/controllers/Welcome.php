@@ -185,7 +185,7 @@ class Welcome extends CI_Controller {
 	public function logout() {
 		// unset($_SESSION);
 		$this->session->sess_destroy();
-		redirect('base_url(sign-in)');
+		redirect('sign-in');
 	}
 
 }

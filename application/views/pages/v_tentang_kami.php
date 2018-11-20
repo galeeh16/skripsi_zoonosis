@@ -1,13 +1,5 @@
-<style>
-  div.jumbotron {
-    -moz-box-shadow:    -0.5px -0.5px 0.5px 0.5px rgba(0, 0, 0, 0.2);
-      -webkit-box-shadow: -0.5px -0.5px 0.5px 0.5px rgba(0, 0, 0, 0.2);
-      box-shadow: -0.2px -0.2px 0.2px 0.2px rgba(0, 0, 0, 0.2), 2px 3px 1px rgba(0, 0, 0, 0.19);
-  }
-</style>
-
 <div id="wrapper">
-	<!-- NAVBAR -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="navbar-header brand" style="margin-left: 80px;"">
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
@@ -27,13 +19,13 @@
             <a href="<?php echo base_url('home') ?>" title="Home"><span class="lnr lnr-home"></span> Home</a>
           </li>    
           <li class="navbar-link">
-            <a href="<?php echo base_url('bantuan') ?>" title="Bantuan"><span class="lnr lnr-question-circle"></span> Bantuan</a>
+            <a href="<?php echo base_url('bantuan') ?>" title="Bantuan" ><span class="lnr lnr-question-circle"></span> Bantuan</a>
           </li>    
           <li class="navbar-link">
             <a href="<?php echo base_url('informasi-penyakit') ?>" title="Informasi Penyakit"><span class="lnr lnr-bug"></span> Informasi Penyakit</a>
           </li>    
           <li class="navbar-link">
-            <a href="<?php echo base_url('tentang-kami') ?>" title="Tentang Kami"><span class="lnr lnr-code"></span> Tentang Kami</a>
+            <a href="<?php echo base_url('tentang-kami') ?>" title="Tentang Kami" class="active"><span class="lnr lnr-code"></span> Tentang Kami</a>
           </li>    
         </ul>
 
@@ -78,46 +70,56 @@
     </nav>
     <!-- END NAVBAR -->
 
-		<div class="container-fluid" style="margin-top: 120px">
-  		<div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <div class="jumbotron" style="background-color: #fff;">
-            <div class="form-group">
-              <br><br>
-              <center>
-                <div class="text-center"><img src="<?= base_url('assets/img/zoonosis.jpg'); ?>" alt="Klorofil Logo" width="150px"></div>
-                <h4>Login to your account</h4>
-                <br>
-              </center>
-            </div>
-            <?php echo $this->session->userdata('err'); ?>
-              <form method="POST" action="<?= base_url('welcome/proses_login'); ?>">
-                <div class="form-group">
-                  <label class="control-label sr-only">Username</label>
-                  <input type="text" class="form-control input-lg" id="username" name="username"placeholder="Username" autocomplete="off" required="true" value="<?php if(isset($_COOKIE["username"])) echo $_COOKIE['username']; ?>">
-                </div>
-                <div class="form-group">
-                  <label class="control-label sr-only">Password</label>
-                  <input type="password" class="form-control input-lg" id="password" name="password"placeholder="Password" autocomplete="off" required="true" value="<?php if(isset($_COOKIE["password"])) echo $_COOKIE['password']; ?>">
-                </div>
-                <div class="form-group clearfix">
-                  <label class="fancy-checkbox element-left">
-                    <input type="checkbox" name="remember_me" <?php if(isset($_COOKIE['remember'])) {echo 'checked'; }else {echo '';} ?>>
-                    <span>Ingat saya</span>
-                  </label>
-                </div>
-                <div class="form-group">
-                  <input type="submit" class="btn btn-block btn-primary btn-lg" name="masuk" value="Masuk" />
-                </div>
-            </form>   
-            <div class="form-group">
-              <p style="font-size: 15px">Belum mempunyai akun? <a href="<?= base_url('sign-up');?>" title="Buat Akun">Buat Akun</a></p>
-            </div>
-          </div>
-        </div>  
-      </div>
+<div class="container" style="margin-top: 120px">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="jumbotron">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos magni optio eveniet. Optio praesentium molestiae laborum, necessitatibus dolores soluta ea porro voluptatibus harum magnam explicabo ducimus, dolor quas. Doloribus aliquid repudiandae labore mollitia enim explicabo amet perferendis assumenda beatae dolorem iusto, cupiditate hic, deserunt incidunt, fugit deleniti, maxime placeat provident. Doloribus assumenda laborum blanditiis non reiciendis voluptatum laboriosam ducimus, eius vero tenetur aspernatur vitae quis commodi harum. Dolores nostrum quis dolorum eum ipsa quo, accusamus rem, doloribus laudantium expedita sequi voluptatum omnis quia molestiae id consectetur atque nemo, porro eius. Modi neque, sint architecto soluta eligendi rem id ratione nemo!</p>
+			</div>
 		</div>
 
+		<div class="col-md-4">
+			<div class="panel">
+				<div class="panel-heading">
+					<h4 class="panel-title text-center">AUTHOR</h4>
+				</div>
+				<div class="panel-body">
+					<center><img class="img-responsive img-circle" src="<?= base_url('assets/img/hutama.jpg') ?>" alt="Avatar" width="100px" /></center>
+					<br>
+					<table class="table">
+						<tr>
+							<td>Nama</td>
+							<td>:</td>
+							<td>Hutama Mahendra D</td>
+						</tr>
+						<tr>
+							<td>Asal</td>
+							<td>:</td>
+							<td>Magelang, Jawa Tengah</td>
+						</tr>
+						<tr>
+							<td>Pendidikan</td>
+							<td>:</td>
+							<td>S-1 Teknik Informatika UPN Veteran Yogyakarta</td>
+						</tr>
+					</table>
+
+					<div class="form-group">
+						<div class="form-group">
+							<h4 class="panel-title">Follow me :</h4>
+						</div>
+						<div class="form-group">
+	            <a href="https://www.instagram.com/galihanggorojati/" class="fa fa-instagram logo" target="_blank" title="Follow me on instagram" style="font-size: 24px; color: #D23097; margin-right: 5px"></a>
+	            <a href="https://www.twitter.com/JTGalih/" class="fa fa-twitter logo" target="_blank" title="Follow me on twitter" style="font-size: 24px; color: #00AAFF; margin-right: 4px;"></a>
+	            <a href="https://www.facebook.com/galihanggorojati" class="fa fa-facebook logo" target="_blank" title="Follow me on facebook" style="font-size: 21px; color: #0060FF; margin-right: 5px;"></a>
+	            <a href="https://github.com/galeeh16" class="fa fa-github-alt logo" target="_blank" title="Follow me on github" style="font-size: 24px; color: #24292e;"></a>
+	          </div>  
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-<?php $this->load->view('pages/v_footer'); ?>
+<?php $this->load->view('pages/v_footer') ?>
