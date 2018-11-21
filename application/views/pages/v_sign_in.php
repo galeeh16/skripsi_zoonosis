@@ -81,9 +81,8 @@
 		<div class="container-fluid" style="margin-top: 120px">
   		<div class="row">
         <div class="col-md-4 col-md-offset-4">
-          <div class="jumbotron" style="background-color: #fff;">
+          <div class="jumbotron" style="background-color: #fff; padding-right: 30px; padding-left: 30px;">
             <div class="form-group">
-              <br><br>
               <center>
                 <div class="text-center"><img src="<?= base_url('assets/img/zoonosis.jpg'); ?>" alt="Klorofil Logo" width="150px"></div>
                 <h4>Login to your account</h4>
@@ -117,7 +116,6 @@
         </div>  
       </div>
 		</div>
-
 </div>
 
 <?php $this->load->view('pages/v_footer'); ?>
