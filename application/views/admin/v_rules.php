@@ -46,7 +46,7 @@
 								<div class="panel-body">
 									<!-- TOMBOL TAMBAH USER -->
 									<div class="form-group">
-										<button type="button" class="btn btn-primary" title="Tambah User" onclick="submit('tambah')"><i class="fa fa-plus-square"></i>  TAMBAH GEJALA</button>
+										<button type="button" class="btn btn-primary" title="Tambah Rules" onclick="submit('tambah')"><i class="fa fa-plus-square"></i>  TAMBAH RULES</button>
 									</div>
 									<!-- END TOMBOL TAMBAH USER -->
 

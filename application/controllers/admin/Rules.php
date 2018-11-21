@@ -25,7 +25,8 @@ class Rules extends CI_Controller {
 
 	public function fetch_rules()
 	{
-	   $fetch_data = $this->Model_rules->make_datatables();  
+	   $fetch_data = $this->Model_rules->make_datatables(); 
+	   print_r($fetch_data); 
 	   $data = array();  
 	   $no = 1;
 	   foreach($fetch_data as $row)  
