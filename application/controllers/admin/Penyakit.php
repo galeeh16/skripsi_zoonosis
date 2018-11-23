@@ -9,12 +9,14 @@ class Penyakit extends CI_Controller {
 		$this->load->model('Model_penyakit');
 		$this->load->model('Model_solusi');
 		$this->load->model('Model_rules');
+		$this->load->model('Model_user');
 	}
 
 	public function index()
 	{
 		$title['title'] = 'Zoonosis | Admin Penyakit';
 		$data['solusi'] = $this->Model_solusi->get_all();
+		$title['user'] = $this->Model_user->get_where($this->session->userdata('id'));
 		$this->load->view('admin/v_header_admin', $title);
 		$this->load->view('admin/v_penyakit', $data);
 	}

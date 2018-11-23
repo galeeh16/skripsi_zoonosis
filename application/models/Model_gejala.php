@@ -106,7 +106,8 @@ class Model_gejala extends CI_Model {
 		}
 	}
 
-  function get_total_gejala() {
+  function get_total_gejala() 
+  {
     $this->db->select('COUNT(*) AS jumlah');
     $this->db->from($this->table);
     return $this->db->get()->row();

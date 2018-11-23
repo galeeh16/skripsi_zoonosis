@@ -4,20 +4,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Model_rules extends CI_Model {
 
 	private $table = 'rules';
-	private $select_column = array("id_rules", "id_gejala", "id_penyakit", "kode_gejala", "nama_gejala", "kode_penyakit", "nama_penyakit", "cf");  
-  private $order_column = array(null, null, null, "kode_gejala", "nama_gejala", "kode_penyakit", "nama_penyakit", "bobot");
+  private $order_column = array(null, null, null, "cf", "nama_gejala", "nama_penyakit");
 
   function make_query()  
   {  
-  	$this->db->select($this->select_column);  
+  	$this->db->select('*');  
   	$this->db->from($this->table);  
+  	$this->db->join('gejala', 'gejala.id_gejala = rules.id_gejala', 'left');
+  	$this->db->join('penyakit', 'penyakit.id_penyakit = rules.id_penyakit', 'left');
   	if(isset($_POST["search"]["value"]))  
   	{  
-  		$this->db->like("nama_gejala", $_POST["search"]["value"]);  
-  		$this->db->or_like("nama_penyakit", $_POST["search"]["value"]);  
+  		$this->db->like("nama_penyakit", $_POST["search"]["value"]);  
+  		$this->db->or_like("nama_gejala", $_POST["search"]["value"]);  
   		$this->db->or_like("cf", $_POST["search"]["value"]);    
   	}  
-  	if(isset($_POST["order"]))  
+  	if(isset($_POST['order']))  
   	{  
   		$this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);  
   	}  
@@ -30,10 +31,10 @@ class Model_rules extends CI_Model {
   function make_datatables()
   {  
   	$this->make_query();  
-  	if($_POST["length"] != -1)  
-  	{  
-  		$this->db->limit($_POST['length'], $_POST['start']);  
-  	}  
+  	// if($_POST['length'] != -1)  
+  	// {  
+  	// 	$this->db->limit($_POST['length'], $_POST['start']);  
+  	// }  
   	$query = $this->db->get();  
   	return $query->result();  
   }  

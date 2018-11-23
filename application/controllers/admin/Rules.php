@@ -9,11 +9,13 @@ class Rules extends CI_Controller {
 		$this->load->model('Model_rules');
 		$this->load->model('Model_gejala');
 		$this->load->model('Model_penyakit');
+		$this->load->model('Model_user');
 	}
 
 	public function index()
 	{
 		$title['title'] = "Zoonsis | Admin Rules";
+		$title['user'] = $this->Model_user->get_where($this->session->userdata('id'));
 		$data = [
 			'gejala'   => $this->Model_gejala->get_all(),
 			'penyakit' => $this->Model_penyakit->get_all(),
@@ -26,7 +28,6 @@ class Rules extends CI_Controller {
 	public function fetch_rules()
 	{
 	   $fetch_data = $this->Model_rules->make_datatables(); 
-	   print_r($fetch_data); 
 	   $data = array();  
 	   $no = 1;
 	   foreach($fetch_data as $row)  
@@ -49,6 +50,10 @@ class Rules extends CI_Controller {
       "recordsFiltered"  => $this->Model_rules->get_filtered_data(),  
       "data"             => $data  
 	   ];  
+
+	   echo '<pre>';
+	   print_r($output);
+	   echo '<pre>';
 
 	   echo json_encode($output);
 	}

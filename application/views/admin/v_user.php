@@ -83,6 +83,15 @@
 		</div>
 		<!-- END MAIN -->
 
+		<div class="clearfix"></div>
+		<footer>
+			<div class="container-fluid">
+				<p class="copyright">&copy; 2018 <a href="https://if.upnyk.ac.id" target="_blank" title="IF UPNYK">IF UPNYK</a>. All Rights Reserved.</p>
+			</div>
+		</footer>
+	</div>
+	<!-- END WRAPPER -->
+
 		<!-- MODAL USER -->
 		<div class="modal fade" id="modal-user" data-backdrop="static" data-keyboard="false" role="dialog">
 			<div class="modal-dialog modal-lg" role="document">

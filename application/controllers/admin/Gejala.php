@@ -8,11 +8,13 @@ class Gejala extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Model_gejala');
 		$this->load->model('Model_rules');
+		$this->load->model('Model_user');
 	}
 
 	public function index()
 	{
 		$title['title'] = 'Zoonosis | Admin Gejala';
+		$title['user'] = $this->Model_user->get_where($this->session->userdata('id'));
 		$this->load->view('admin/v_header_admin', $title);
 		$this->load->view('admin/v_gejala');
 	}

@@ -7,7 +7,8 @@ class Model_penyakit extends CI_Model {
 	private $select_column = array("id_penyakit", "kode_penyakit", "nama_penyakit", "deskripsi_penyakit", "nama_solusi", "foto");  
   private $order_column = array(null, "kode_penyakit", "nama_penyakit", "deskripsi_penyakit", "nama_solusi", null);  
 
-	function get_total_penyakit() {
+	function get_total_penyakit() 
+  {
     $this->db->select('COUNT(*) AS jumlah');
     $this->db->from($this->table);
     return $this->db->get()->row();
@@ -75,7 +76,8 @@ class Model_penyakit extends CI_Model {
     }
   }
 
-  function insert_data($data) {
+  function insert_data($data) 
+  {
   	$this->db->insert($this->table, $data);
   	if($this->db->affected_rows() > 0) {
   		return true;
@@ -84,7 +86,8 @@ class Model_penyakit extends CI_Model {
   	}
   }
 
-  function update_data($id, $data) {
+  function update_data($id, $data) 
+  {
     $this->db->where('id_penyakit', $id);
     $this->db->update($this->table, $data);
 
@@ -95,7 +98,8 @@ class Model_penyakit extends CI_Model {
     }
   }
 
-  function delete_data($id) {
+  function delete_data($id) 
+  {
     $this->db->where('id_penyakit', $id);
     $this->db->delete($this->table);
 
@@ -106,7 +110,8 @@ class Model_penyakit extends CI_Model {
     }
   }
 
-  function get_gejala($id) {
+  function get_gejala($id) 
+  {
     $this->db->where('id_penyakit', $id);
     $this->db->join('gejala', 'gejala.id_gejala = rules.id_gejala', 'left');
     return $this->db->get('rules')->result();

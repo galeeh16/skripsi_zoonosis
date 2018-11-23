@@ -69,17 +69,17 @@
 								<li><a href="<?= base_url('troubleshooting')?>">Troubleshooting</a></li>
 							</ul>
 						</li>
-						<!-- <li class="dropdown">
+						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?= base_url('assets/img/user/'.$user->photo); ?>" class="img-circle" alt="Avatar"> <span><?= $user->name; ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li>
 									<a href="<?= base_url('admin/user/profile') ?>"><i class="lnr lnr-user"></i> <span>My Profile</span></a>
 								</li>
 								<li>
-									<a href="<?= base_url('home/logout') ?>"><i class="lnr lnr-exit"></i> <span>Logout</span></a>
+									<a href="<?= base_url('welcome/logout') ?>"><i class="lnr lnr-exit"></i> <span>Logout</span></a>
 								</li>
 							</ul>
-						</li> -->
+						</li>
 					</ul>
 				</div>
 				<!-- END NAVBAR MENU -->

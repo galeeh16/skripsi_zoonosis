@@ -71,9 +71,7 @@
 							</div>
 							
 						</div>
-					</div>
-					
-					
+					</div>					
 				</div>
 			</div>
 			<!-- END MAIN CONTENT -->
@@ -90,30 +88,28 @@
 	<!-- END WRAPPER -->
 
 	<!-- JAVASCRIPT -->
-	<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
-	<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js');?>"></script>
-	<script src="<?= base_url('assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js');?>"></script>
-	<script src="<?= base_url('assets/vendor/chartist/js/chartist.min.js'); ?>"></script>
-	<script src="<?= base_url('assets/scripts/klorofil-common.js'); ?>"></script>
-	<script src="<?= base_url('assets/vendor/sweetalert/sweetalert.min.js'); ?>"></script>
-	<script src="<?= base_url('assets/vendor/datatable/media/js/jquery.dataTables.min.js') ?>"></script>
-	<script src="<?= base_url('assets/vendor/datatable/media/js/dataTables.bootstrap.min.js') ?>"></script>
+	<script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.min.js');?>"></script>
+	<script src="<?php echo base_url('assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js');?>"></script>
+	<script src="<?php echo base_url('assets/vendor/chartist/js/chartist.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/scripts/klorofil-common.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/vendor/sweetalert/sweetalert.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/vendor/datatable/media/js/jquery.dataTables.min.js') ?>"></script>
+	<script src="<?php echo base_url('assets/vendor/datatable/media/js/dataTables.bootstrap.min.js') ?>"></script>
 
 	<!-- DATATABLE SCRIPT -->
-	<script type="text/javascript" language="javascript">
-		var dataTable = '';
-		var url, msg = '';
+	<script>
+		var dataTable, msg, url = '';
+		var url_datatables = "<?php echo base_url('admin/rules/fetch_rules') ?>";
 		
 		$(document).ready(function() {
-
-			console.log('dsadsadsa');
 
 			dataTable = $('#table-rules').DataTable({
 					"processing": true,
 					"serverSide": true,
 					"order": [],
 					"ajax": {
-						url: "<?php echo base_url().'admin/rules/fetch_rules' ?>",
+						url: url_datatables,
 						type: "POST"
 					},
 					"columnDefs": [
@@ -128,7 +124,9 @@
 					"language": {
 			      searchPlaceholder: "Masukkan keywords...",
 			      processing: '<center><img src="<?php echo base_url()?>assets/img/loading.gif" width="50" height="50"/></center>'
-			  	},
+			  	}
 				});
 
-		}):
+		});
+
+	</script>

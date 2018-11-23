@@ -11,9 +11,8 @@ class User extends CI_Controller {
 
 	public function index()
 	{
-		// $data['users'] = $this->Model_user->get_all();
 		$title['title'] = 'Zoonosis | Admin User';
-		// $title['user'] = $this->Model_user->get_where($this->session->userdata('id'));
+		$title['user'] = $this->Model_user->get_where($this->session->userdata('id'));
 
 		$this->load->view('admin/v_header_admin', $title);
 		$this->load->view('admin/v_user');
