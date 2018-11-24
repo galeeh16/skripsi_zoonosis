@@ -6,6 +6,7 @@ class User extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->cek_session();
 		$this->load->model('Model_user');
 	}
 
@@ -16,6 +17,19 @@ class User extends CI_Controller {
 
 		$this->load->view('admin/v_header_admin', $title);
 		$this->load->view('admin/v_user');
+	}
+
+	public function cek_session()	
+	{
+		if(!$this->session->userdata('level') == 'Admin') {
+			$this->session->set_flashdata('err', '<div class="alert alert-danger" role="alert"><center><i class="fa fa-exclamation-triangle"></i> Anda bukan Admin, silahkan login terlebih dahulu!</center></div>');
+
+			setcookie("username", "", time()+(10*365*24*60), "/");
+			setcookie("password", "", time()+(10*365*24*60), "/");
+			setcookie("remember", "", time()+(10*365*24*60), "/");
+			
+			return redirect(base_url('sign-in'),'refresh');
+		}
 	}
 
 	public function fetch_user()
@@ -254,6 +268,18 @@ class User extends CI_Controller {
 			$data['success'] = true;
 			echo json_encode($data);
 		}
+	}
+
+	public function profile()	
+	{
+		$data = [
+			'title' => 'Zoonosis | Profile '.$this->session->userdata('name'),
+			'user' => $this->Model_user->get_where($this->session->userdata('id'))
+		];
+
+		$this->load->view('admin/v_header_admin', $data);
+		$this->load->view('admin/v_profile', $data);
+
 	}
 
 

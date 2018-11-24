@@ -28,7 +28,8 @@ class Dashboard extends CI_Controller {
 		$this->load->view('admin/v_dashboard', $data);
 	}
 
-	public function cek_session()	{
+	public function cek_session()	
+	{
 		if(!$this->session->userdata('level') == 'Admin') {
 			$this->session->set_flashdata('err', '<div class="alert alert-danger" role="alert"><center><i class="fa fa-exclamation-triangle"></i> Anda bukan Admin, silahkan login terlebih dahulu!</center></div>');
 
