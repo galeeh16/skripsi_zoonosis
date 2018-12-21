@@ -137,6 +137,7 @@ class Welcome extends CI_Controller {
 				'username' => $this->input->post('username'),
 				'password' => $this->input->post('password'),
 				'name' => $this->input->post('name'),
+				'handphone' => $this->input->post('handphone'),
 				'level' => 'Member'
 			];
 
