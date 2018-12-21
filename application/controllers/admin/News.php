@@ -21,7 +21,7 @@ class News extends CI_Controller {
 
 	public function cek_session()	
 	{
-		if(!$this->session->userdata('level') == 'Admin') {
+		if($this->session->userdata('level') !== 'Admin') {
 			$this->session->set_flashdata('err', '<div class="alert alert-danger" role="alert"><center><i class="fa fa-exclamation-triangle"></i> Anda bukan Admin, silahkan login terlebih dahulu!</center></div>');
 
 			setcookie("username", "", time()+(10*365*24*60), "/");
