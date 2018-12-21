@@ -170,6 +170,7 @@
 	<script src="<?= base_url('assets/vendor/sweetalert/sweetalert.min.js'); ?>"></script>
 	<script src="<?= base_url('assets/vendor/datatable/media/js/jquery.dataTables.min.js') ?>"></script>
 	<script src="<?= base_url('assets/vendor/datatable/media/js/dataTables.bootstrap.min.js') ?>"></script>
+	<script src="<?= base_url('assets/vendor/jquery-blockUI/jquery.blockUI.js') ?>"></script>
 
 	<style>
 		.swal-button--cancel {
@@ -180,10 +181,16 @@
 
 	<!-- DATATABLE SCRIPT -->
 	<script type="text/javascript" language="javascript">
-		var dataTable = '';
-		var url, msg = '';
+		var dataTable, url, msg = '';
+		// var url, msg = '';
+			$.blockUI({
+							message: '<img src="<?= base_url()?>assets/img/loading.gif" width="100px"><p>Loading...</p>'
+						});
 		
 		$(document).ready(function() {
+
+			$.unblockUI();
+		
 
 			dataTable = $('#table-user').DataTable({
 					"processing": true,
@@ -231,6 +238,11 @@
 					dataType: 'json',
 					processData: false,
 					contentType: false,
+					beforeSend: function(){
+						$.blockUI({
+							message: '<img src="<?= base_url()?>assets/img/loading.gif" width="100px"><p>Harap Tunggu...</p>'
+						});
+					},
 					success: (result) => {
 						console.log(result);
 						if(result.success == true) {
@@ -255,6 +267,9 @@
 								el.after(val);
 							});
 						}
+					},
+					complete: () => {
+						$.unblockUI();
 					},
 					error: (xhr, stat, err) => {
 						console.error(err);

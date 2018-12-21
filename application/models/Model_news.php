@@ -58,6 +58,12 @@ class Model_news extends CI_Model {
     return $this->db->count_all_results();  
   }
 
+  function get_all() 
+  {
+    $this->db->join('users', 'users.id_user = news.user_id', 'left');
+    return $this->db->get($this->table)->result();
+  }
+
   function get_where($id)
   {
     $this->db->where('id_news', $id);

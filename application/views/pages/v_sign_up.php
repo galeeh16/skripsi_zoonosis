@@ -130,6 +130,7 @@
 	<?php $this->load->view('pages/v_footer') ?>
 
 	<script src="<?php echo base_url('assets/vendor/sweetalert/sweetalert.min.js') ?>"></script>
+	<script src="<?= base_url('assets/vendor/jquery-blockUI/jquery.blockUI.js') ?>"></script>
 
 	<script>
 
@@ -145,6 +146,11 @@
 	 				type: 'post',
 	 				data: data,
 	 				dataType: 'json',
+	 				beforeSend: function() {
+	 					$.blockUI({
+							message: '<img src="<?= base_url()?>assets/img/loading.gif" width="100px"><p>Please wait...</p>'
+						});
+	 				},
 					success: (result) => {
 						console.log(result);
 
@@ -165,6 +171,9 @@
 								el.after(val);
 							});
 						}
+					},
+					complete: function() {
+						$.unblockUI();
 					},
 					error: (xhr, stat, err) => {
 						console.log(err);
