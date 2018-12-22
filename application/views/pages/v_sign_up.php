@@ -86,23 +86,23 @@
 							
 						
 							<form class="form-auth-small" method="POST" action="<?php echo base_url('welcome/proses_daftar') ?>" id="form-daftar">
-								<div class="form-group">
+								<div class="form-group" style="margin-bottom: 2px">
 									<label class="control-label">Nama Lengkap</label>
 									<input type="text" name="name" id="name" class="form-control" placeholder="Nama Lengkap">
 								</div>
-								<div class="form-group">
+								<div class="form-group" style="margin-bottom: 2px">
 									<label class="control-label">Username</label>
 									<input type="text" name="username" id="username" class="form-control" placeholder="Username">
 								</div>
-								<div class="form-group">
+								<div class="form-group" style="margin-bottom: 2px">
 									<label class="control-label">Password</label>
 									<input type="password" name="password" id="password" class="form-control" placeholder="Password">
 								</div>
-								<div class="form-group">
+								<div class="form-group" style="margin-bottom: 2px">
 									<label class="control-label">Konfirmasi Password</label>
 									<input type="password" name="konfirmasi_password" id="konfirmasi_password" class="form-control" placeholder="Konfirmasi Password">
 								</div>	
-								<div class="form-group">
+								<div class="form-group" style="margin-bottom: 2px">
 									<label class="control-label">No. Handphone</label>
 									<input type="text" name="handphone" id="handphone" class="form-control" placeholder="Nomor Handphone">
 								</div>							

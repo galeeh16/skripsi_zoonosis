@@ -46,7 +46,11 @@ class User extends CI_Controller {
         $sub_array[] = $row->address;  
         $sub_array[] = $row->handphone;  
         $sub_array[] = $row->level;  
-        $sub_array[] = '<img src="'.base_url().'assets/img/user/'.$row->photo.'" class="img-thumbnail" width="70" height="70" />';
+        if($row->photo !== NULL && $row->photo !== '') {
+        	$sub_array[] = '<img src="'.base_url().'assets/img/user/'.$row->photo.'" class="img-thumbnail" width="70" height="70" />';
+        } else {
+        		$sub_array[] = '<img src="'.base_url().'assets/img/user-default.jpg" class="img-thumbnail" width="70" height="70" />';
+        }
         $sub_array[] = '<button type="button" title="Ubah User" onclick="submit('."'$row->id_user'".')" class="btn btn-warning btn-xs"><i class="lnr lnr-pencil"></i></button>';  
         $sub_array[] = '<button type="button"onclick="hapus('."'$row->id_user'".')" title="Hapus User" class="btn btn-danger btn-xs"><i class="lnr lnr-trash"></i></button>';  
 
@@ -90,7 +94,7 @@ class User extends CI_Controller {
 
 		$this->form_validation->set_rules('photo', 'Foto', 'callback_photo_check');
 
-		$this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
+		$this->form_validation->set_error_delimiters('<span class="help-block" style="padding-bottom: 0px; margin-bottom: 0px">', '</span>');
 
 		if ($this->form_validation->run($this) == TRUE) { 
 			$data = [];

@@ -99,7 +99,7 @@
 					<!-- FORM OPEN -->
 					<?php echo form_open('#', ['class'=>'form-horizontal', 'id'=>'form-user']); ?>
 						<div class="modal-header" style="background-color: #F6F9FC">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<button type="button" class="close" data-dismiss="modal" onclick="resetForm()" title="Tutup Modal">&times;</button>
 							<h4 class="modal-title text-center"></h4>
 						</div>
 						<!-- MODAL BODY -->
@@ -108,20 +108,20 @@
 							<div class="row">
 								<div class="col-md-6 col-sm-6">
 									<div class="container-fluid">
-										<div class="form-group">
+										<div class="form-group" style="margin-bottom: 2px">
 											<label class="control-label">Nama *</label>
 											<input type="text" name="name" id="name" class="form-control" placeholder="Nama Lengkap">
 										</div>
-										<div class="form-group">
+										<div class="form-group" style="margin-bottom: 2px">
 											<label class="control-label">Username *</label>
 											<input type="text" name="username" id="username" class="form-control" placeholder="Username">
 										</div>
 										<input type="hidden" name="username_2">
-										<div class="form-group">
+										<div class="form-group" style="margin-bottom: 2px">
 											<label class="control-label">Password *</label>
 											<input type="password" name="password" id="password" class="form-control" placeholder="Password">
 										</div>
-										<div class="form-group">
+										<div class="form-group" style="margin-bottom: 2px">
 											<label class="control-label">Alamat *</label>
 											<textarea name="address" id="address" class="form-control" rows="5" placeholder="Alamat"></textarea>
 										</div>
@@ -129,11 +129,11 @@
 								</div>
 								<div class="col-md-6 col-sm-6">
 									<div class="container-fluid">
-										<div class="form-group">
+										<div class="form-group" style="margin-bottom: 2px">
 											<label class="control-label">HP *</label>
 											<input type="text" name="handphone" id="handphone" class="form-control" placeholder="Handphone">
 										</div>
-										<div class="form-group">
+										<div class="form-group" style="margin-bottom: 2px">
 											<label class="control-label">Level *</label>
 											<select name="level" id="level" class="form-control">
 												<option value="">Pilih Level</option>
@@ -141,7 +141,7 @@
 												<option value="Member">Member</option>
 											</select>
 										</div>
-										<div class="form-group">
+										<div class="form-group" style="margin-bottom: 2px">
 											<label class="control-label">Foto</label>
 											<input type="file" class="form-control" name="photo" id="photo">
 										</div>
