@@ -66,6 +66,7 @@ class Model_penyakit extends CI_Model {
   }
 
   function get_where($id) {
+    $this->db->join('solusi', 'solusi.id_solusi = penyakit.id_solusi', 'left');
     $this->db->where('id_penyakit', $id);
     $query =  $this->db->get($this->table);
 

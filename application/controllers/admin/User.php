@@ -227,7 +227,8 @@ class User extends CI_Controller {
 					'address' => $this->input->post('address'),
 					'handphone' => $this->input->post('handphone'),
 					'level' => $this->input->post('level'),
-					'photo' => $this->upload_photo()
+					'photo' => $this->upload_photo(),
+					'update_at' => date('Y-m-d H:i:s')
 				];
 			} else {
 				$data = [
@@ -236,7 +237,8 @@ class User extends CI_Controller {
 					'name' => $this->input->post('name'),
 					'address' => $this->input->post('address'),
 					'handphone' => $this->input->post('handphone'),
-					'level' => $this->input->post('level')
+					'level' => $this->input->post('level'),
+					'update_at' => date('Y-m-d H:i:s')
 				];
 			}
 

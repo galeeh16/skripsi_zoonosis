@@ -65,10 +65,6 @@ class Rules extends CI_Controller {
       "data"             => $data  
 	   ];  
 
-	   echo '<pre>';
-	   print_r($output);
-	   echo '<pre>';
-
 	   echo json_encode($output);
 	}
 

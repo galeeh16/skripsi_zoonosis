@@ -112,7 +112,7 @@
           </div>
           <div class="modal-body">
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-8 col-sm-4">
                 <h4>Deskripsi Penyakit</h4>
                 <div id="deskripsi"></div>
                 <h4>Gejala</h4>
@@ -120,7 +120,7 @@
                 <h4>Solusi</h4>
                 <div id="solusi"></div>
               </div>
-              <div class="col-md-4" id="img">
+              <div class="col-md-4 col-sm-4" id="img">
                 
               </div>
             </div>
@@ -141,6 +141,7 @@
 
 <script>
   function detail(id) {
+    var base_url = "<?php echo base_url(); ?>";
     $.ajax({
       url: '<?php echo base_url('welcome/info_detail') ?>',
       type: 'post',
@@ -160,6 +161,7 @@
         }
         $('#gejala').html(char);
         $('#solusi').html('<p class="text-justify">'+res.penyakit.nama_solusi+'</p>');
+        $('#img').html('<img class="img-responsive" src="' + base_url + 'assets/img/penyakit/' + res.penyakit.foto + '"/>');
       },
       error: (xhr, stat, err) => {
         console.error(err);

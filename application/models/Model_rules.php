@@ -4,11 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Model_rules extends CI_Model {
 
 	private $table = 'rules';
-  private $order_column = array(null, null, null, "cf", "nama_gejala", "nama_penyakit");
+  private $select_column = array("id_rules", "cf",  "nama_gejala", "nama_penyakit");  
+  private $order_column = array(null, "cf", "nama_gejala", "nama_penyakit");
 
   function make_query()  
   {  
-  	$this->db->select('*');  
+  	$this->db->select($this->select_column);  
   	$this->db->from($this->table);  
   	$this->db->join('gejala', 'gejala.id_gejala = rules.id_gejala', 'left');
   	$this->db->join('penyakit', 'penyakit.id_penyakit = rules.id_penyakit', 'left');
@@ -24,17 +25,17 @@ class Model_rules extends CI_Model {
   	}  
   	else  
   	{  
-  		$this->db->order_by('id_rules', 'ASC');  
+  		$this->db->order_by("id_rules", "ASC");  
   	}  
   }  
 
   function make_datatables()
   {  
   	$this->make_query();  
-  	// if($_POST['length'] != -1)  
-  	// {  
-  	// 	$this->db->limit($_POST['length'], $_POST['start']);  
-  	// }  
+  	if(!empty($_POST['length']) && $_POST["length"] != -1)  
+  	{  
+  		$this->db->limit($_POST["length"], $_POST["start"]);  
+  	}  
   	$query = $this->db->get();  
   	return $query->result();  
   }  

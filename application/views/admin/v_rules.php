@@ -96,6 +96,7 @@
 	<script src="<?php echo base_url('assets/vendor/sweetalert/sweetalert.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/vendor/datatable/media/js/jquery.dataTables.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/vendor/datatable/media/js/dataTables.bootstrap.min.js') ?>"></script>
+	<script src="<?= base_url('assets/vendor/jquery-blockUI/jquery.blockUI.js') ?>"></script>
 
 	<!-- DATATABLE SCRIPT -->
 	<script>
