@@ -113,6 +113,10 @@ class Model_gejala extends CI_Model {
     return $this->db->get()->row();
   }
 
+  function ngawur() {
+    
+  }
+
 
 }
 
